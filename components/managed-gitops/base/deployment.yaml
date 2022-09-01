@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: managed-gitops
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: managed-gitops
+    app.kubernetes.io/part-of: alpo-studio
+  name: managed-gitops
+  namespace: alpo-studio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: managed-gitops
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: managed-gitops
+    spec:
+      containers:
+      - image: quay.io/jduimovich0/managed-gitops
+        imagePullPolicy: Always
+        name: container-image
+        resources: {}
+status: {}
