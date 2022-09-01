@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: service-provider-integration-operator
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: service-provider-integration-operator
+    app.kubernetes.io/part-of: alpo-studio
+  name: service-provider-integration-operator
+  namespace: alpo-studio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: service-provider-integration-operator
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: service-provider-integration-operator
+    spec:
+      containers:
+      - image: quay.io/jduimovich0/service-provider-integration-operator
+        imagePullPolicy: Always
+        name: container-image
+        resources: {}
+status: {}
